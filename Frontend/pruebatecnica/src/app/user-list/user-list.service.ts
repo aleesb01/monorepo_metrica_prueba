@@ -8,7 +8,8 @@ import { User } from '../models/user.model';
 })
 export class UserService {
     private http = inject(HttpClient);
-    private apiUrl = 'http://localhost:3000/applicants/';
+    private apiUrl = 'https://monorepo-metrica-prueba.onrender.com:3000/applicants/';
+
 
     getUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.apiUrl + 'users');
