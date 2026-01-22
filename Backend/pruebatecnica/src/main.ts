@@ -5,7 +5,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    origin: ['http://localhost:4200', 'https://monorepo-metrica-prueba.onrender.com'],
+    origin: ['http://localhost:4200', 'https://monorepo-metrica-prueba-1.onrender.com'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
