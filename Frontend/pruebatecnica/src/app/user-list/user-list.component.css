@@ -1,0 +1,33 @@
+.container {
+    padding: 20px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+.no-data {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+}
+
+table {
+    width: 100%;
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    font-size: 0.8rem;
+
+    &.senior {
+        background-color: #ffd740;
+        color: #000;
+    }
+}
