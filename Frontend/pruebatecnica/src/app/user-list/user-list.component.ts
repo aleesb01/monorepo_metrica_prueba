@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,9 @@ import { User } from '../models/user.model';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+  @ViewChild('fileInput')
+  fileInputVariable!: ElementRef;
+
   private userService = inject(UserService);
   private snackBar = inject(MatSnackBar);
 
@@ -43,10 +46,14 @@ export class UserListComponent implements OnInit {
     if (file) {
       this.userService.uploadExcel(file).subscribe({
         next: () => {
+          this.fileInputVariable.nativeElement.value = '';
           this.showNotification('Excel procesado correctamente');
           this.loadUsers();
         },
-        error: () => this.showNotification('Error al subir el archivo', 'error')
+        error: () => {
+          this.fileInputVariable.nativeElement.value = '';
+          this.showNotification('Error al subir el archivo', 'error')
+        }
       });
     }
   }
